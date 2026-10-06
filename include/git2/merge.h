@@ -477,21 +477,6 @@ GIT_EXTERN(int) git_merge_bases(
 /**
  * Find a merge base given a list of commits
  *
- * @param out the OID of a merge base considering all the commits
- * @param repo the repository where the commits exist
- * @param length The number of commits in the provided `input_array`
- * @param input_array oids of the commits
- * @return Zero on success; GIT_ENOTFOUND or -1 on failure.
- */
-GIT_EXTERN(int) git_merge_base_many(
-	git_oid *out,
-	git_repository *repo,
-	size_t length,
-	const git_oid input_array[]);
-
-/**
- * Find all merge bases given a list of commits
- *
  * This behaves similar to [`git merge-base`](https://git-scm.com/docs/git-merge-base#_discussion).
  *
  * Given three commits `a`, `b`, and `c`, `merge_base_many`
@@ -522,6 +507,21 @@ GIT_EXTERN(int) git_merge_base_many(
  *
  * If you're looking to recieve the common ancestor between all the
  * given commits, use `merge_base_octopus`.
+ *
+ * @param out the OID of a merge base considering all the commits
+ * @param repo the repository where the commits exist
+ * @param length The number of commits in the provided `input_array`
+ * @param input_array oids of the commits
+ * @return Zero on success; GIT_ENOTFOUND or -1 on failure.
+ */
+GIT_EXTERN(int) git_merge_base_many(
+	git_oid *out,
+	git_repository *repo,
+	size_t length,
+	const git_oid input_array[]);
+
+/**
+ * Find all merge bases given a list of commits
  *
  * @param out array in which to store the resulting ids
  * @param repo the repository where the commits exist
